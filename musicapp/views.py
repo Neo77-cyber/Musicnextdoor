@@ -4,34 +4,54 @@ from .forms import BlogForm
 
 # Create your views here.
 
+
+
+
 def home(request):
-    return render(request, 'home.html')
+    posts = MusicBlog.objects.all().order_by('-date')
+    
+    return render(request, 'home.html', {'posts': posts})
 
+def post(request, pk):
+    post = MusicBlog.objects.get(id = pk)
 
-def blog(request):
-    news = MusicBlog.objects.all()
     form = BlogForm()
     if request.method == 'POST':
         form = BlogForm(request.POST)
     if form.is_valid():
             form.save()
-            return redirect('vote') 
+            return redirect('votes') 
+
+
+
     
+                
+    return render (request, 'post.html', {'post': post, 'form': form})
 
-    return render(request, 'blog.html', {'news': news, 'form': form})
 
-def vote(request):
+def votes(request):
     total_votes = Vote.objects.count()
-    vote1 = Vote.objects.filter(vote = 'this is so good').count() 
-    votepercent1 = vote1 / total_votes * (100)
-    vote2 = Vote.objects.filter(vote = 'good but no replay value').count() 
-    votepercent2 = vote2 / total_votes * (100)
-    vote3 = Vote.objects.filter(vote = 'i dont like this').count() 
-    votepercent3 = vote3 / total_votes * (100)
+    
+    vote1_count = Vote.objects.filter(vote='this is so good').count()
+    vote1_percent = (vote1_count / total_votes) * 100
+    
+    
+    vote2_count = Vote.objects.filter(vote='good but no replay value').count()
+    vote2_percent = (vote2_count / total_votes) * 100
+    
+    vote3_count = Vote.objects.filter(vote='i dont like this').count()
+    vote3_percent = (vote3_count / total_votes) * 100
+    
+    context = {
+        'total_votes': total_votes,
+        'vote1_count': vote1_count,
+        'vote1_percent': vote1_percent,
+        'vote2_count': vote2_count,
+        'vote2_percent': vote2_percent,
+        'vote3_count': vote3_count,
+        'vote3_percent': vote3_percent,
+    }
+    
+    return render(request, 'votes.html', context)
 
-    context = {'total_votes': total_votes, 'vote1':vote1, 'votepercent1': votepercent1,
-                'vote2':vote2, 'votepercent2': votepercent2, 'vote3':vote3, 
-                'votepercent3': votepercent3}
-
-   
-    return render (request, 'vote.html', context )
+         
