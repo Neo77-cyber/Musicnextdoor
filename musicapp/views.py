@@ -32,12 +32,9 @@ def home(request):
     return render(request, 'home.html', {'page_obj': page_obj, 'createpostform': createpost_form})
 
 
-
-
-
-
 def single_post(request, pk):
     post = get_object_or_404(MusicBlog, id=pk)
+
     comment_form = CreateCommentForm()
     vote_form = VoteForm()
 
@@ -48,7 +45,8 @@ def single_post(request, pk):
             comment.author = request.user
             comment.post = post
             comment.save()
-            comment_form = CreateCommentForm()   
+            comment_form = CreateCommentForm()  
+
         vote_form = VoteForm(request.POST)
         if vote_form.is_valid():
                 vote = vote_form.save(commit=False)
@@ -87,39 +85,6 @@ def single_post(request, pk):
     return render(request, 'single_post.html', context)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-def votecount(request):
-    total_votes = Vote.objects.count() 
-    vote1_count = Vote.objects.filter(vote='this is so good').count()
-    vote1_percent = (vote1_count / total_votes) * 100  
-    vote2_count = Vote.objects.filter(vote='good but no replay value').count()
-    vote2_percent = (vote2_count / total_votes) * 100  
-    vote3_count = Vote.objects.filter(vote='i dont like this').count()
-    vote3_percent = (vote3_count / total_votes) * 100
-  
-    context = {
-        'total_votes': total_votes,
-        'vote1_count': vote1_count,
-        'vote1_percent': vote1_percent,
-        'vote2_count': vote2_count,
-        'vote2_percent': vote2_percent,
-        'vote3_count': vote3_count,
-        'vote3_percent': vote3_percent,
-    }
-    
-    return render(request, 'votecount.html', context)
-
 def signin(request):
     if request.method == 'POST':
             form = AuthenticationForm(request, data=request.POST)
@@ -135,7 +100,8 @@ def signin(request):
                 return redirect('signin')
     form = AuthenticationForm()
     context = {'form':form}
-    return render (request,'signin.html')
+    return render (request,'signin.html', context)
+
 
 def register(request):
     form_name = UserForm()

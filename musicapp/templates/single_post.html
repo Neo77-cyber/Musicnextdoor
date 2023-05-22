@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blog Single - Company Bootstrap Template</title>
+  <title>MusicNextDoor</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,11 +40,7 @@
 </head>
 
 <body>
-
-  
-
   <main id="main">
-
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
@@ -59,25 +55,17 @@
 
       </div>
     </section><!-- End Breadcrumbs -->
-
     <!-- ======= Blog Single Section ======= -->
-    
     <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
-        
+      <div class="container" data-aos="fade-up">     
         <div class="row">
-
-
             <article class="entry entry-single">
-
               <div class="entry-img">
                 <img src="{{ post.image.url }}" alt="" class="img-fluid">
               </div>
-
               <h2 class="entry-title">
                 <a href="blog-single.html">{{post.title}}</a>
               </h2>
-
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{post.author}}</a></li>
@@ -85,7 +73,6 @@
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
                 </ul>
               </div>
-
               <div class="entry-content">
                 <p>
                   {{post.body}}
@@ -107,22 +94,10 @@
                 <p>Good but no replay value: ({{ post.vote2_count }}) - ({{ post.vote2_percent }}%)</p>
                 <p>Meh put it in a trash: ({{ post.vote3_count }}) - ({{ post.vote3_percent }}%)</p>
             </div>
-            
-            
-            
-            
-              
-
-               
-
               </div>
             </article><!-- End blog entry -->
-
-            
-
             <div class="blog-comments">
-              <h4 class="comments-count">{{ post.comments.count }} Comments</h4>
-            
+              <h4 class="comments-count">{{ post.comments.count }} Comments</h4>     
               {% for comment in users_comments %}
                 <div class="comment">
                   <div class="d-flex">
@@ -134,13 +109,7 @@
                   </div>
                 </div>
               {% endfor %}
-            </div>
-
-              
-
-              
-
-              
+            </div>      
             {% if user.is_authenticated %}
             <div class="reply-form">
               <h4>What do you think?</h4>
@@ -153,30 +122,16 @@
               <p>Please <a href="{% url 'signin' %}">sign in</a> to add a comment.</p>
               {% endif %}
             </div>
-              
-            
-
             </div><!-- End blog comments -->
-
           </div><!-- End blog entries list -->
-
-          
-
         </div>
-
-      </div>
-      
-      
+      </div>    
     </section><!-- End Blog Single Section -->
-    
-
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
  
-
+  <!-- ======= Footer ======= -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  
   <!-- Vendor JS Files -->
   <script src="{%static 'assets/vendor/aos/aos.js' %}"></script>
   <script src="{%static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
