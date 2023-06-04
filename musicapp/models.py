@@ -56,7 +56,7 @@ class Vote(models.Model):
 
         vote1_percent = round((vote1_count / total_votes) * 100, 2) if total_votes != 0 else 0
         vote2_percent = round((vote2_count / total_votes) * 100, 2) if total_votes != 0 else 0
-        vote3_percent = round((vote3_count / total_votes) * 100, ) if total_votes != 0 else 0
+        vote3_percent = round((vote3_count / total_votes) * 100, 2 ) if total_votes != 0 else 0
 
         post.total_votes = total_votes
         post.vote1_count = vote1_count

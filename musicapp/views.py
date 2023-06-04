@@ -11,7 +11,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.paginator import Paginator
 
 
-# Create your views here.
+
 
 def home(request):
     posts = MusicBlog.objects.all().order_by('-date')
