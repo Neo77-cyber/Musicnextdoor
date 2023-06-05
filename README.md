@@ -1,6 +1,6 @@
 # Musicnextdoor
 
-Welcome to the MusicNextDoor! This is a platform where music enthusiasts can connect, share their favorite albums, write reviews, and engage in discussions with other users. Every user can write a review and discuss about their favorite albums
+Welcome to the MusicNextDoor! This is a platform where music enthusiasts can connect, share their favorite albums, write reviews, and engage in discussions with other users. Every user can write a review and discuss about their favorite albums. It offers separate implementations using Django and FastAPI to cater to different preferences and requirements
 
 ## Features
 
@@ -16,6 +16,12 @@ Welcome to the MusicNextDoor! This is a platform where music enthusiasts can con
 3. Set up the database and perform migrations using `python manage.py migrate`.
 4. Start the development server with `python manage.py runserver`.
 5. Access the Music Blog in your web browser at `http://localhost:8000`.
+6. Access FastAPI backend code seperately: exit previous virtual environment `deactivate`
+7.  Navigate to the fastapi directory: `cd ..` then `cd musicnextdoor-fastapi`
+8. create a virtual environment `pipenv shell`
+9. install dependecies `pipenv install -r requirements.txt`
+10. start the development server `uvicorn main:app --reload`
+11. Access the app in your browser at `http://localhost:8000`
 
 ## User Registration
 
